@@ -1,0 +1,20 @@
+{
+  "name": "simple-route-mapper",
+  "version": "0.0.1",
+  "description": "A simple route mapper.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liuzhuan/route-mapper.git"
+  },
+  "keywords": [],
+  "author": "Liu Zhuan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/liuzhuan/route-mapper/issues"
+  },
+  "homepage": "https://github.com/liuzhuan/route-mapper#readme"
+}
