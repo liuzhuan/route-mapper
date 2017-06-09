@@ -14,7 +14,7 @@ A simple route mapper.
 const mapper = require('route-mapper');
 ```
 
-### Define Schema Mapper
+### Define Schema Mapper
 
 ```js
 mapper.define({
