@@ -37,6 +37,10 @@ function get(raw) {
  */
 function getTransformedResult(raw, fields, params) {
     let result = raw;
+    if (!fields || fields.length <= 0) {
+        return result;
+    }
+    
     fields.forEach(function(item, i) {
         const reg = new RegExp(item, 'g');
         result = result.replace(reg, params[i]);
