@@ -55,13 +55,14 @@ function getTransformedResult(raw, fields, params) {
  * @param {String} key 
  */
 function initReg(policy) {
-    policy = policy.replace(/\{[^\/]+\}/g, '([^/]+)')
-        .replace(/\?/g, '\\?');
+    policy = policy.replace(/\?/g, '\\?')
+        .replace(/\{[^/?]+\}/g, '([^/?]+)');
+    // console.log('init reg: ', policy);
     return new RegExp('^' + policy + '$');
 }
 
 function getParamFields(policy) {
-    return policy.match(/\{[^\/]+\}/g);
+    return policy.match(/\{[^\/]+?\}/g);
 }
 
 module.exports = {
