@@ -8,10 +8,16 @@ A simple route mapper.
 
 ## Usage
 
-### Import JS
+## Install
 
 ```js
-const mapper = require('route-mapper');
+npm install --save-dev simple-route-mapper
+```
+
+### Import
+
+```js
+const mapper = require('simple-route-mapper');
 ```
 
 ### Define Schema Mapper
