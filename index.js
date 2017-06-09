@@ -21,7 +21,7 @@ function get(raw) {
             const fields = getParamFields(key);
             const params = result.slice(1);
             const target_schema = mapper[key];
-            console.log('fields:', fields, ', params:', params);
+            // console.log('fields:', fields, ', params:', params);
             return getTransformedResult(target_schema, fields, params);
         }
     }
@@ -51,10 +51,12 @@ function getTransformedResult(raw, fields, params) {
 
 /**
  * 获取 key 对应的正则表达式，将 key 中 {value} 格式转换为 ([^/]+)
+ * 将 ? 替换为 \?
  * @param {String} key 
  */
 function initReg(policy) {
-    policy = policy.replace(/\{[^\/]+\}/g, '([^/]+)');
+    policy = policy.replace(/\{[^\/]+\}/g, '([^/]+)')
+        .replace(/\?/g, '\\?');
     return new RegExp('^' + policy + '$');
 }
 
