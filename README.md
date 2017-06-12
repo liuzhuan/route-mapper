@@ -11,7 +11,7 @@ A simple route mapper.
 ## Install
 
 ```js
-npm install --save-dev simple-route-mapper
+npm install --save simple-route-mapper
 ```
 
 ### Import
