@@ -1,27 +1,8 @@
-var mapper = require('./index.js');
-
-mapper.define({
-    'a/{id}/b': 'c/{id}/e',
-    'a/{id}/b/{age}/c': 'c/{id}/e/{age}/f',
-    'policy://a/{uuid}/b?key={key}': 'https://root/a/b.html?uuid={uuid}&key={key}',
-    'policy://a/{uuid}/b?key={key}&key2={key2}': 'https://root/a/b.html?uuid={uuid}&key={key}&key2={key2}',
-    'qsc://qsc.policy/go/project/love/{uuid}/verify/payee/state/{id}?aaa={tt}': 'https://m2.qschou.com/verify.html?uuid={uuid}&readstate={id}&type={tt}',
+var simpleRouteMapper = require("./index.js");
+simpleRouteMapper.define({
+  "foo://bar.policy/project/{uuid}?type={type}&state={state}": "https://www.foobar.com/project/index.html?uuid={uuid}&type={type}&state={state}"
 });
 
-var result = mapper.get('a/123-abc/b');
-console.log(result);
-
-result = mapper.get('a/123-abc/b/30/c');
-console.log(result);
-
-result = mapper.get('policy://a/1234-abcd/b?key=h3r5');
-console.log(result);
-
-result = mapper.get('policy://a/1234-abcd/b?key=h3r5&key2=3456');
-console.log(result);
-
-result = mapper.get('qsc://qsc.policy/go/project/love/123-abc/verify/payee/state/1234-abc?aaa=foo-bar');
-console.log(result);
-
-result = mapper.get('custom-policy');
+var raw = "foo://bar.policy/project/123-456-abc?type=love&state=my-state";
+var result = simpleRouteMapper.get(raw);
 console.log(result);
