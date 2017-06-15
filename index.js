@@ -21,7 +21,10 @@ function get(raw) {
             const fields = getParamFields(key);
             const params = result.slice(1);
             const target_schema = mapper[key];
-            console.log('fields:', fields, ', params:', params);
+            // console.log('fields:', fields, ', params:', params);
+            if (typeof target_schema === 'function') {
+                return target_schema.apply(null, params);
+            }
             return getTransformedResult(target_schema, fields, params);
         }
     }

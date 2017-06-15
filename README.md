@@ -37,6 +37,32 @@ mapper.get('a/123-abc/b/30/c');  // => c/123-abc/e/30/f
 mapper.get('some-unkown-url');   // => null
 ```
 
+### 支持映射为函数
+
+比如：
+
+```js
+function foo(uuid, state, cid) {
+  if (state == 0) {
+    return 'output:' + uuid + ':' + state + ':' + cid;
+  } else {
+    return 'output:' + uuid + ':' + state + ':' + cid + '!STATE!=0!';
+  }
+}
+
+mapper.define({
+  "func://go/project/{uuid}?state={state}&category_id={cid}": foo
+});
+
+let raw = 'func://go/project/123-abc?state=0&category_id=3456';
+console.log(simpleRouteMapper.get(raw));
+// => output:123-abc:0:3456
+
+raw = 'func://go/project/123-abc?state=1&category_id=3456';
+console.log(simpleRouteMapper.get(raw));
+// => output:123-abc:1:3456!STATE!=0!
+```
+
 ## Warning
 
 * 支持动态参数，使用 `{}` 标示。
